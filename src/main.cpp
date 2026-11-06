@@ -74,7 +74,7 @@ String target_ssid = "None";
 int target_channel = 1;
 
 // Literal constructors - DO NOT reorganize to avoid breaking wiring
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
+U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, 22, 21);
 RF24 jam1(5, 17, 16000000);
 RF24 jam2(16, 4, 16000000);
 RF24 jam3(15, 2, 16000000);  // CE=GPIO15, CSN=GPIO2 (matches nRFBox pinout)
@@ -204,36 +204,10 @@ void setup() {
         delay(35);
     }
 
-    // Initialize radios (matching nRFBox pattern)
+    // Keep init simple like original - each module configures radios in its own Setup()
     jam1.begin();
-    jam1.setAutoAck(false);
-    jam1.stopListening();
-    jam1.setRetries(0, 0);
-    jam1.setPALevel(RF24_PA_MAX, true);
-    jam1.setDataRate(RF24_2MBPS);
-    jam1.setCRCLength(RF24_CRC_DISABLED);
-    jam1.powerDown();
-    digitalWrite(5, LOW);   // CE pin low
-
     jam2.begin();
-    jam2.setAutoAck(false);
-    jam2.stopListening();
-    jam2.setRetries(0, 0);
-    jam2.setPALevel(RF24_PA_MAX, true);
-    jam2.setDataRate(RF24_2MBPS);
-    jam2.setCRCLength(RF24_CRC_DISABLED);
-    jam2.powerDown();
-    digitalWrite(16, LOW);  // CE pin low
-
     jam3.begin();
-    jam3.setAutoAck(false);
-    jam3.stopListening();
-    jam3.setRetries(0, 0);
-    jam3.setPALevel(RF24_PA_MAX, true);
-    jam3.setDataRate(RF24_2MBPS);
-    jam3.setCRCLength(RF24_CRC_DISABLED);
-    jam3.powerDown();
-    digitalWrite(15, LOW);  // CE pin low
 }
 
 void loop() {
