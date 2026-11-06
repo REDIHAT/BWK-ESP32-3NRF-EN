@@ -77,7 +77,7 @@ int target_channel = 1;
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, 22, 21);
 RF24 jam1(5, 17, 16000000);
 RF24 jam2(16, 4, 16000000);
-RF24 jam3(15, 2, 16000000);
+RF24 jam3(2, 15, 16000000);  // CE=GPIO2, CSN=GPIO15 (swapped to fix boot issue)
 
 AsyncWebServer asyncServer(AppConfig::WEB_PORT);
 
