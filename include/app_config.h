@@ -30,8 +30,8 @@ namespace AppConfig {
     constexpr uint8_t  NRF1_CSN  = 17;
     constexpr uint8_t  NRF2_CE   = 16;
     constexpr uint8_t  NRF2_CSN  = 4;
-    constexpr uint8_t  NRF3_CE   = 2;   // GPIO2 as CE (pulsed, safe for boot)
-    constexpr uint8_t  NRF3_CSN  = 15;  // GPIO15 as CSN (HIGH idle, safe for boot)
+    constexpr uint8_t  NRF3_CE   = 15;
+    constexpr uint8_t  NRF3_CSN  = 2;
     constexpr uint32_t NRF_SPI_HZ = 16000000;
 
     // ---------- Firmware / Identity ----------
